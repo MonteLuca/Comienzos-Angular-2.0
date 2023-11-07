@@ -6,12 +6,10 @@ import { DbzModule } from './dbz/dbz.module';
 import { HeroesModule } from './heroes/heroes.module';
 
 import { AppComponent } from './app.component';
-import { CardListComponent } from './card-list/card-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardListComponent,
   ],
   imports: [
     BrowserModule,
