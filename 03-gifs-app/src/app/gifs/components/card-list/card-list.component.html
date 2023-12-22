@@ -1,12 +1,11 @@
 <div class="row">
-  <div class="col-md-3 col-sm-6">
+  <div *ngFor="let gif of gifsList" class="col-md-3 col-sm-6">
     <div class="card mb-2 bg-dark text-center">
-      <!-- TODO Crear Imagen-->
-      <img src="https://sm.ign.com/ign_latam/screenshot/default/chainsaw-galeria_y8dk.jpg" class="card-img-top"
-        alt="Chainsaw Man">
+      <img [src]="gif.images.downsized_medium.url"
+           [alt]="gif.title"
+           class="card-img-top">
       <div class="card-body text-white">
-        <h5 class="card-title">Chainsaw Man</h5>
-        <p class="card-text">Aki, Denji, Makima y Pochita</p>
+        <h5 class="card-title">{{ gif.title }}</h5>
       </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+import { Gif, SearchResponse } from './../interfaces/gifs.interfaces';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
 
@@ -10,16 +11,16 @@ export class GifsService {
 
   private _tagsHistory: string[] = [];
 
+  public gifList: Gif[] = []
+
   constructor( private http: HttpClient ) { }
 
   get tagsHistory() {
     return [...this._tagsHistory];
   }
 
-  public searchTagService( tag: string) : void {
-
-    if ( tag.length === 0) return;
-
+  public searchTagService( tag: string ) : void {
+    if (tag.length === 0) return;
     this.organizeHistory( tag );
 
     const params = new HttpParams()
@@ -27,15 +28,14 @@ export class GifsService {
       .set('limit', '10')
       .set('q', tag)
 
-    this.http.get(`${this.SERVICE_URL}/search`, { params })
+    this.http.get<SearchResponse>(`${this.SERVICE_URL}/search`, { params })
       .subscribe( resp => {
-        console.log(resp);
-      })
-
+        this.gifList = resp.data;
+      }
+    )
   }
 
   private organizeHistory ( tag: string ) {
-
     tag = tag.toLowerCase();
 
     if ( this._tagsHistory.includes( tag ) ) {
@@ -43,7 +43,6 @@ export class GifsService {
     }
 
     this._tagsHistory.unshift( tag )
-
     this._tagsHistory = this.tagsHistory.splice(0,10);
   }
 
