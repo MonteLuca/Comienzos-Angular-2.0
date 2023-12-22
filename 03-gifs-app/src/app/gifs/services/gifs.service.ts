@@ -1,6 +1,7 @@
 import { Gif, SearchResponse } from './../interfaces/gifs.interfaces';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
+import { SearchResponse } from '../interfaces/gifs.interface';
 
 @Injectable({providedIn: 'root'})
 export class GifsService {
