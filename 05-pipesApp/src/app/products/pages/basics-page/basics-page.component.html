@@ -1,0 +1,71 @@
+<p-panel header="Pipes Básicos" class="p-2">
+  <p>
+    Pipes incluidos en Angular - Usualmente en el Common Module
+  </p>
+  <p>
+    Los pipes son objetos que nos permiten transformar de manera visual la informacion que mostramos en pantalla
+    sin mutar la data real
+  </p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="uppercase">
+      {{ nameLower | uppercase }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-4">
+    <p-card header="lowercase">
+      {{ nameUpper | lowercase }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-4">
+    <p-card header="titlecase">
+      {{ fullName | titlecase }}
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-card header="date - codigo">
+      <ul>
+        <li class="pl-1"> fecha </li>
+        <li class="pl-1"> fecha | date </li>
+        <li class="pl-1"> fecha | date:'short' </li>
+        <li class="pl-1"> fecha | date:'long' </li>
+        <li class="pl-1"> fecha | date:'MMMM' </li>
+        <li class="pl-1"> fecha | date:'MMMM dd, yyyy' </li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li class="pl-1"> fecha | date:'long':'GMT-6' </li>
+        <li class="pl-1"> fecha | date:'long':'GMT-4' </li>
+        <li class="pl-1"> fecha | date:'long':'':'ja' </li>
+        <li class="pl-1"> fecha | date:'long':'':'it' </li>
+      </ul>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-card header="date - ejemplo">
+      <ul>
+        <li class="pl-1"> {{ customDate }} </li>
+        <li class="pl-1"> {{ customDate | date }} </li>
+        <li class="pl-1"> {{ customDate | date:'short' }} </li>
+        <li class="pl-1"> {{ customDate | date:'long' }} </li>
+        <li class="pl-1"> {{ customDate | date:'MMMM' }} </li>
+        <li class="pl-1"> {{ customDate | date:'MMMM dd, yyyy' }} </li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li class="pl-1">{{ customDate | date:'long':'GMT-6' }}</li>
+        <li class="pl-1">{{ customDate | date:'long':'GMT-4' }}</li>
+        <li class="pl-1">{{ customDate | date:'long':'':'ja' }}</li>
+        <li class="pl-1">{{ customDate | date:'long':'':'it' }}</li>
+      </ul>
+    </p-card>
+  </div>
+</div>

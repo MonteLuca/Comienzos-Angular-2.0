@@ -1,0 +1,52 @@
+<h1 class="mt-3">Selectores anidados</h1>
+<hr>
+<form [formGroup]="myForm">
+
+  <!-- Region -->
+   <div class="row mb-3">
+    <div class="col">
+      <div class="form-label">Continente:</div>
+      <select formControlName="region" class="form-control">
+        <option value="">--- Seleccione continente ---</option>
+        @for (region of regions; track $index) {
+          <option [value]="region">{{ region }}</option>
+        }
+      </select>
+    </div>
+   </div>
+
+  <!-- Countries -->
+  @if (countriesByRegion.length > 0) {
+    <div class="row mb-3">
+     <div class="col">
+       <div class="form-label">País:</div>
+       <select formControlName="country" class="form-control">
+         <option value="">--- Seleccione país ---</option>
+         @for (country of countriesByRegion; track $index) {
+           <option [value]="country.cca3">{{ country.name }}</option>
+         }
+       </select>
+     </div>
+    </div>
+  }
+
+  <!-- Fronteras -->
+  @if (borders.length > 0) {
+    <div class="row mb-3">
+      <div class="col">
+        <div class="form-label">Fronteras:</div>
+        <select formControlName="border" class="form-control">
+          <option value="">--- Seleccione la frontera ---</option>
+          @for (country of borders; track $index) {
+            <option [value]="country.cca3">{{ country.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+  }
+</form>
+
+<h3>Formulario</h3>
+<code>
+  {{ myForm.value | json }}
+</code>
